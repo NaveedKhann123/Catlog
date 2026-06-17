@@ -33,21 +33,20 @@ function doSearch() {
   width: 100%;
   height: 250px;
 
+  /* BACKGROUND IMAGE PROPERTIES */
   background-image: url('/hero.jpg');
-  background-size: cover;
-  background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 
   position: relative;
 }
-
 /* SEARCH BAR */
 .search-bar {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -130%);
 
   display: flex;
   width: 450px;

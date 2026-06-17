@@ -1,215 +1,158 @@
 <template>
-
   <div class="gallery">
 
-    <!-- Header -->
+    <!-- HEADER -->
     <div class="top-bar">
       <h2>Latest Photos</h2>
 
       <div class="page">
-        Page <button>1</button> of <span>200</span>
+        Page <button class="page-btn">1</button> of <span>200</span>
       </div>
     </div>
 
-  <div class="images">
+    <!-- GRID -->
+    <div class="images">
 
-  <div class="child">
-    <img src="/public/img-01.jpg" alt="">
-    <div class="child-flex">
-      <p>18 Oct 2020</p>
-      <p>9,906 views</p>
+      <div class="child" v-for="n in 16" :key="n">
+        
+        <div class="img-wrapper">
+          <img :src="`/img-${String(n).padStart(2,'0')}.jpg`" alt="photo" />
+        </div>
+
+        <div class="child-flex">
+          <p>📅 2020</p>
+          <p>👁 10k views</p>
+        </div>
+
+      </div>
+
     </div>
-  </div>
-
-  <div class="child">
-    <img src="/public/img-02.jpg" alt="">
-    <div class="child-flex">
-      <p>20 Sep 2020</p>
-      <p>12,860 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-03.jpg" alt="">
-    <div class="child-flex">
-      <p>16 Sep 2020</p>
-      <p>10,900 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-04.jpg" alt="">
-    <div class="child-flex">
-      <p>12 Sep 2020</p>
-      <p>11,300 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-05.jpg" alt="">
-    <div class="child-flex">
-      <p>14 Oct 2020</p>
-      <p>16,100 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-06.jpg" alt="">
-    <div class="child-flex">
-      <p>12 Oct 2020</p>
-      <p>12,460 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-07.jpg" alt="">
-    <div class="child-flex">
-      <p>10 Oct 2020</p>
-      <p>11,402 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-08.jpg" alt="">
-    <div class="child-flex">
-      <p>12 Sep 2020</p>
-      <p>11,300 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-09.jpg" alt="">
-    <div class="child-flex">
-      <p>10 Sep 2020</p>
-      <p>42,700 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-10.jpg" alt="">
-    <div class="child-flex">
-      <p>8 Sep 2020</p>
-      <p>11,402 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-11.jpg" alt="">
-    <div class="child-flex">
-      <p>4 Sep 2020</p>
-      <p>32,906 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-12.jpg" alt="">
-    <div class="child-flex">
-      <p>28 Aug 2020</p>
-      <p>50,700 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-13.jpg" alt="">
-    <div class="child-flex">
-      <p>22 Aug 2020</p>
-      <p>107,510 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-14.jpg" alt="">
-    <div class="child-flex">
-      <p>22 Aug 2020</p>
-      <p>107,510 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-15.jpg" alt="">
-    <div class="child-flex">
-      <p>14 Aug 2020</p>
-      <p>118,006 views</p>
-    </div>
-  </div>
-
-  <div>
-    <img src="/public/img-16.jpg" alt="">
-    <div class="child-flex">
-      <p>9 Aug 2020</p>
-      <p>121,300 views</p>
-    </div>
-  </div>
-
-</div>
-
-
-
 
   </div>
-
-  
 </template>
 
-<script setup>
-
-</script>
-
 <style scoped>
-body {
-  margin: 0;
-  padding: 0;
-}
 .gallery {
-  padding: 20px;
-}
-button{
-  width: 40px;
-  height: 27px;
-  
+  padding: 25px;
+  max-width: 1200px;
+  margin: auto;
 }
 
-
+/* TOP BAR */
 .top-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .top-bar h2 {
-  font-size: 29px;
+  font-size: 28px;
   color: #009999;
-
+  font-weight: bold;
 }
 
+/* PAGE */
 .page {
   font-size: 14px;
-color: #009999;;
+  color: #009999;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-button{
-    color: #009999;
+.page-btn {
+  width: 35px;
+  height: 28px;
+  border: 1px solid #009999;
+  background: white;
+  color: #009999;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
+.page-btn:hover {
+  background: #009999;
+  color: white;
+}
 
+/* GRID */
 .images {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 18px;
 }
 
-.images img {
+/* CARD */
+.child {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.child:hover {
+  transform: translateY(-5px);
+}
+
+/* IMAGE */
+.img-wrapper {
+  overflow: hidden;
+}
+
+.child img {
   width: 100%;
-  height: auto;
+  height: 180px;
+  object-fit: cover;
   display: block;
-}
-.child-flex{
-    display: flex;
-    justify-content: space-between;
-    color: #666666;
+  transition: 0.4s;
 }
 
+.child:hover img {
+  transform: scale(1.05);
+}
+
+/* TEXT */
+.child-flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 13px;
+  color: #666;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .images {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .images {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .top-bar {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .images {
+    grid-template-columns: 1fr;
+  }
+
+  .child img {
+    height: 160px;
+  }
+}
 </style>
-
-
-

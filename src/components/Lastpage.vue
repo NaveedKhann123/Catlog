@@ -1,177 +1,190 @@
 <template>
-    <div class="last">
+  <footer class="last">
 
-<div class="last-first">
-<h1>About Catalog-Z</h1>
-<p class="last-p">Catalog-Z is free Bootstrap 5 Alpha 2 HTML Template for video <br>
-     and photo websites. You can freely use this TemplateMo layout <br>
-      for a front-end integration with any kind of CMS website.</p>
-      <p class="last-pp">Copyright 2020 Catalog-Z Company. All rights reserved.</p>
-</div>
+    <!-- LEFT -->
+    <div class="col">
+      <h1>About Catalog-Z</h1>
+      <p>
+        Catalog-Z is a free Bootstrap template for video and photo websites.
+        You can use it for CMS integration.
+      </p>
+      <p class="copyright">
+        © 2020 Catalog-Z Company. All rights reserved.
+      </p>
+    </div>
 
-<div class="last-second">
-<h1>Our Links</h1>
-<a href="">Advertise</a>
-<a href="">Support</a>
-<a href="">Our Company</a>
-<a href="">Contact</a>
-</div>
+    <!-- MIDDLE -->
+    <div class="col">
+      <h1>Our Links</h1>
+      <a href="#">Advertise</a>
+      <a href="#">Support</a>
+      <a href="#">Our Company</a>
+      <a href="#">Contact</a>
+    </div>
 
-<div>
-<div class="social-icons">
+    <!-- RIGHT -->
+    <div class="col">
 
-  <i class="fa-brands fa-facebook"></i>
+      <div class="social-icons">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+        <i class="fa-brands fa-pinterest"></i>
+      </div>
 
-  <i class="fa-brands fa-instagram"></i>
-
-  <i class="fa-brands fa-linkedin"></i>
-
-  <i class="fa-brands fa-pinterest"></i>
-
-</div>
-<div class="terms">
-<p>Terms of use </p>
-<p>Privacy Policy</p>
-</div>
-<div>
-   
-    <p class="div-p">Designed by TemplateMo</p>
-</div>
-</div>
-
-
+      <div class="bottom">
+        <p>Terms of Use</p>
+        <p>Privacy Policy</p>
+        <p class="design">Designed by TemplateMo</p>
+      </div>
 
     </div>
 
-
-
-
+  </footer>
 </template>
+
 <style scoped>
+
+/* ================= FOOTER BASE ================= */
 .last {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-  background-color: #EEEEEE;
-  padding: 50px;
-  min-height: 250px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  background: #eee;
+  padding: 60px;
 }
 
-
-
-.last-first h1,
-.last-second h3 {
-  margin-bottom: 20px;
+/* ================= COLUMN ================= */
+.col h1 {
+  margin-bottom: 15px;
   color: #0f172a;
-  font-weight: 700;
-  position: relative;
 }
 
-.terms{
-  margin-left: 100px;
-  color: #9696AC;
-  margin-top: 70px;
+.col p {
+  color: #777;
+  line-height: 1.7;
 }
 
-.last-p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: #9696AC;
-  margin-top: 10px;
-}
-.last-pp{
-  margin-top: 90px;
-   color: #9696AC;
-}
-.div-p{
-  margin-top: 80px ;
-   color: #9696AC;
-}
-.last-second {
-  display: flex;
-  flex-direction: column;
-}
-
-.last-second a {
+.col a {
+  display: block;
   text-decoration: none;
-  color: #475569;
-  margin-bottom: 14px;
+  color: #555;
+  margin-bottom: 10px;
   transition: 0.3s;
-  font-weight: 500;
 }
 
-.last-second a:hover {
+.col a:hover {
   color: #009999;
-  transform: translateX(8px);
+  transform: translateX(5px);
 }
 
+/* ================= SOCIAL ================= */
 .social-icons {
   display: flex;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .social-icons i {
-  width: 50px;
-  height: 50px;
-
+  width: 45px;
+  height: 45px;
   display: flex;
-  justify-content: center;
   align-items: center;
-
+  justify-content: center;
   background: white;
   border-radius: 50%;
-
-  font-size: 22px;
   cursor: pointer;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
-  transition: all .4s ease;
+  transition: 0.3s;
 }
 
 .social-icons i:hover {
-  background: #10b981;
+  background: #009999;
   color: white;
-  transform: translateY(-8px) rotate(360deg);
+  transform: translateY(-5px);
 }
 
-.last-third p {
-  color: #475569;
-  line-height: 1.8;
-  margin-bottom: 10px;
+/* ================= BOTTOM ================= */
+.bottom p {
+  color: #777;
+  margin-bottom: 8px;
 }
 
-.last-third div {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #d1d5db;
+.design {
+  margin-top: 15px;
+  font-size: 14px;
 }
 
+/* ===================================================
+   📱 RESPONSIVE MEDIA QUERIES (ADVANCED)
+=================================================== */
+
+/* 🔵 Large Tablets / Small Laptops */
+@media (max-width: 1024px) {
+  .last {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 50px;
+    gap: 40px;
+  }
+}
+
+/* 🟢 Tablets */
 @media (max-width: 768px) {
   .last {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 30px;
+    padding: 40px 25px;
   }
 
   .social-icons {
     justify-content: center;
   }
 
-  .last-second {
-    align-items: center;
-  }
-
-  p {
-    margin-left: 0;
-  }
-
-  .last-first h1::after,
-  .last-second h3::after {
-    left: 50%;
-    transform: translateX(-50%);
+  .col a {
+    font-size: 15px;
   }
 }
+
+/* 🟡 Mobile Large */
+@media (max-width: 480px) {
+  .last {
+    padding: 30px 15px;
+  }
+
+  .col h1 {
+    font-size: 20px;
+  }
+
+  .col p {
+    font-size: 14px;
+  }
+
+  .social-icons i {
+    width: 40px;
+    height: 40px;
+    font-size: 14px;
+  }
+}
+
+/* 🔴 Small Mobile */
+@media (max-width: 360px) {
+  .col h1 {
+    font-size: 18px;
+  }
+
+  .col p,
+  .col a {
+    font-size: 13px;
+  }
+
+  .social-icons {
+    gap: 10px;
+  }
+
+  .social-icons i {
+    width: 35px;
+    height: 35px;
+  }
+}
+
 </style>

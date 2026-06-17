@@ -1,645 +1,665 @@
-<script setup>
-import { ref } from 'vue'
-import Navbar from '../components/Navbar.vue';
-
-const showDropdown = ref(false)
-</script>
-
-
-
 <template>
 
-<div class="hero">
+  <div>
+    <Hero/>
+  </div>
+  <div class="contact-page">
 
-</div>
+    
 
-  <div class="contact">
-    <div class="parent">
-    <div class="contact-1">
-      <h1 class="contact-h1">Contact Page</h1>
+    <!-- Contact Form & Info Section -->
+    <section class="contact-section">
+      <div class="container">
+        <!-- Left Column - Contact Form -->
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <form @submit.prevent="handleSubmit">
+            <div class="form-group">
+              <input 
+                type="text" 
+                v-model="form.name" 
+                placeholder="Your Full Name" 
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <input 
+                type="email" 
+                v-model="form.email" 
+                placeholder="Your Email Address" 
+                required
+              />
+            </div>
+            
+            <div class="form-group">
+              <div class="dropdown" @click="toggleDropdown">
+                <button type="button" class="dropbtn">
+                  {{ form.subject || 'Select Subject ▼' }}
+                </button>
+                <div class="dropdown-content" v-show="isDropdownOpen">
+                  <a @click="selectSubject('Sales & Marketing')">Sales & Marketing</a>
+                  <a @click="selectSubject('Design & Creative')">Design & Creative</a>
+                  <a @click="selectSubject('UI/UX Design')">UI/UX Design</a>
+                  <a @click="selectSubject('General Inquiry')">General Inquiry</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <textarea 
+                v-model="form.message" 
+                placeholder="Your Message..." 
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="send-btn">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
 
-      <input type="text" placeholder="Name" /> <br>  <br>
-      <input type="email" placeholder="Email" /> <br> <br>
+        <!-- Right Column - Address & Info -->
+        <div class="contact-info">
+          <h2>Our Address</h2>
+          <p class="address-desc">
+            Quisque eleifend mi et nisi eleifend pretium. Duis porttitor 
+            accumsan arcu id rhoncus.
+          </p>
+          
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>120-240 Fusce eleifend varius tempus<br>Duis consectetur at ligula 10660</span>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:info@company.com">info@company.com</a>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <a href="tel:0100200340">010-020-0340</a>
+          </div>
+          
+          <div class="info-item">
+            <i class="fas fa-globe"></i>
+            <a href="#" target="_blank">www.company.com</a>
+          </div>
 
-       <div class="dropdown">
-        <button class="dropbtn" @click="showDropdown = !showDropdown">
-          Subject ▼
-        </button>
-
-        <div class="dropdown-content" v-show="showDropdown">
-          <a href="#">Sales and Marketing</a>
-          <a href="#">Create and Design</a>
-          <a href="#">UI / UX</a>
+          <!-- Social Links -->
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
       </div>
+    </section>
 
-      <textarea placeholder="Message"></textarea> <br> <br>
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="container">
+        <h2>Find Us Here</h2>
+        <div class="map-container">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.3522926915375!2d71.49182065189301!3d34.00594202221674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917261b47bb2f%3A0x846a5953da915116!2sGharibabad%20Rd%2C%20Peshawar%2C%20Pakistan!5e0!3m2!1sen!2s!4v1781375639157!5m2!1sen!2s" 
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
 
-      <button class="send-btn">Send</button>
-
-    </div>
- <div class="ouraddress">
- <h1 class="ouraddress-h1">Our Address</h1>
-  <p class="ouraddress-p1">Quisque eleifend mi et nisi eleifend pretium. Duis porttitor accumsan arcu id rhoncus. Praesent fermentum venenatis ipsum, eget vestibulum purus.</p>
-  <p class="ouraddress-p2">Nulla ut scelerisque elit, in fermentum ante. Aliquam congue mattis erat, eget iaculis enim posuere nec. Quisque risus turpis, tempus in iaculis.</p>
-  <p class="ouraddress-p3">120-240 Fusce eleifend varius tempus <br>
-Duis consectetur at ligula 10660</p>
-
-<div class="last-second">
-   
-
-    <a href="mailto:info@company.com">
-        <i class="fas fa-envelope"></i>
-        Email: info@company.com
-    </a>
-
-    <a href="tel:0100200340">
-        <i class="fas fa-phone"></i>
-        Tel: 010-020-0340
-    </a>
-
-    <a href="https://www.company.com" target="_blank">
-        <i class="fas fa-globe"></i>
-        URL: www.company.com
-    </a>
-</div>
-
- </div>
-<div class="ourlocation">
-  <h1>Our Location</h1>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.3522926915375!2d71.49182065189301!3d34.00594202221674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d917261b47bb2f%3A0x846a5953da915116!2sGharibabad%20Rd%2C%20Peshawar%2C%20Pakistan!5e0!3m2!1sen!2s!4v1781375639157!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</div>
+    <!-- Team Section -->
+    <section class="team-section">
+      <div class="container">
+        <h2 class="section-title">Meet Our Team</h2>
+        <p class="section-subtitle">The passionate people behind our success</p>
+        
+        <div class="team-grid">
+          <div class="team-card" v-for="member in teamMembers" :key="member.name">
+            <div class="team-image">
+              <img :src="member.image" :alt="member.name">
+            </div>
+            <h3>{{ member.name }}</h3>
+            <p class="role">{{ member.role }}</p>
+            <p class="bio">{{ member.bio }}</p>
+            <div class="team-social">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-</div>
-
-
-<div class="image">
-  <div class="image-1">
-    <img src="/public/people-1.jpg" alt="">
-    <h1 class="ryan">Ryan White</h1>
-    <p class="ryan-p">Chief Executive Officer</p>
-    <p class="ryan-pp">Mauris ante tellus, feugiat nec metus non, bibendum semper velit. Praesent laoreet urna id tristique fermentum. Morbi</p>
-    <div class="social-icons">
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-</div>
-
+   <div>
+    <Lastpage/>
+   </div>
   </div>
-
-
-
-
-  <div class="image-2">
-    <img src="/public/people-2.jpg" alt="">
-    <h1 class="ryan">Catherine Pinky</h1>
-    <p class="ryan-p">Chief Marketing Officer</p>
-    <p class="ryan-pp">Sed faucibus nec velit finibus accumsan. Sed varius augue et leo pharetra, in varius lacus eleifend. Quisque ut eleifend lacus.</p>
- <div class="social-icons">
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-</div>
-  </div> 
-
-  <div class="image-3">
-    <img src="/public/people-3.jpg" alt="">
-    <h1 class="ryan">Johnny Brief</h1>
-    <p class="ryan-p">Accounting Executive</p>
-    <p class="ryan-pp">Sed faucibus nec velit finibus accumsan. Sed varius augue et leo pharetra, in varius lacus eleifend. Quisque ut eleifend lacus.</p>
-     <div class="social-icons">
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-</div>
-  </div>
-
-   <div class="image-4">
-    <img src="/public/people-4.jpg" alt="">
-    <h1 class="ryan">George Nelson</h1>
-    <p class="ryan-p">Creative Art Director #C69</p>
-    <p class="ryan-pp">Nunc convallis facilisis congue. Curabitur gravida rutrum justo sed pulvinar. Pellentesque ac ante in erat bibendum dignissim.</p>
-       <div class="social-icons">
-    <a href="#"><i class="fab fa-facebook-f"></i></a>
-    <a href="#"><i class="fab fa-twitter"></i></a>
-    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-</div>
-   </div> 
-
-</div>
-
-
-
-
-
-
-
-
- <div class="last">
-
-<div class="last-first">
-<h1>About Catalog-Z</h1>
-<p class="last-p">Catalog-Z is free Bootstrap 5 Alpha 2 HTML Template for video <br>
-     and photo websites. You can freely use this TemplateMo layout <br>
-      for a front-end integration with any kind of CMS website.</p>
-      <p class="last-pp">Copyright 2020 Catalog-Z Company. All rights reserved.</p>
-</div>
-
-<div class="last-second">
-<h1>Our Links</h1>
-<a href="">Advertise</a>
-<a href="">Support</a>
-<a href="">Our Company</a>
-<a href="">Contact</a>
-</div>
-
-<div>
-<div class="social-icons">
-
-  <i class="fa-brands fa-facebook"></i>
-
-  <i class="fa-brands fa-instagram"></i>
-
-  <i class="fa-brands fa-linkedin"></i>
-
-  <i class="fa-brands fa-pinterest"></i>
-
-</div>
-<div class="terms">
-<p>Terms of use </p>
-<p>Privacy Policy</p>
-</div>
-<div>
-   
-    <p class="div-p">Designed by TemplateMo</p>
-</div>
-</div>
-
-
-
-    </div>
-
-
-
-
-
-
-
-  </div>
-
-
-
+  
 </template>
 
+<script setup>
+import { ref, reactive } from 'vue'
+import Hero from './Hero.vue'
+import Lastpage from './Lastpage.vue'
+
+// Dropdown state
+const isDropdownOpen = ref(false)
+
+// Form data
+const form = reactive({
+  name: '',
+  email: '',
+  subject: '',
+  message: ''
+})
+
+// Team members data
+const teamMembers = [
+  {
+    name: 'Ryan White',
+    role: 'Chief Executive Officer',
+    bio: 'Mauris ante tellus, feugiat nec metus non, bibendum semper velit.',
+    image: '/people-1.jpg'
+  },
+  {
+    name: 'Catherine Pinky',
+    role: 'Chief Marketing Officer',
+    bio: 'Sed faucibus nec velit finibus accumsan. Sed varius augue et leo pharetra.',
+    image: '/people-2.jpg'
+  },
+  {
+    name: 'Johnny Brief',
+    role: 'Accounting Executive',
+    bio: 'Sed faucibus nec velit finibus accumsan. Sed varius augue et leo pharetra.',
+    image: '/people-3.jpg'
+  },
+  {
+    name: 'George Nelson',
+    role: 'Creative Art Director',
+    bio: 'Nunc convallis facilisis congue. Curabitur gravida rutrum justo sed pulvinar.',
+    image: '/people-4.jpg'
+  }
+]
+
+// Toggle dropdown
+const toggleDropdown = () => {
+  isDropdownOpen.value = !isDropdownOpen.value
+}
+
+// Select subject
+const selectSubject = (subject) => {
+  form.subject = subject
+  isDropdownOpen.value = false
+}
+
+// Handle form submission
+const handleSubmit = () => {
+  console.log('Form submitted:', form)
+  alert('Thank you for your message! We will get back to you soon.')
+  
+  // Reset form
+  form.name = ''
+  form.email = ''
+  form.subject = ''
+  form.message = ''
+}
+</script>
 
 <style scoped>
-.navbar {
-  background-color: #FFFFFF;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 30px;
-  color: black;
- 
-}
-
-.logo {
-
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 1px;
-   color:rgba(0, 0, 255, 0.587);
-  padding:   9px 14px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 25px;
+/* Reset & Base */
+* {
   margin: 0;
   padding: 0;
-}
-.nav-links li a {
-  text-decoration: none;
- font-size: 22px;
-  transition: 0.3s;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: #A49999;
-}
- .active {
-  border-bottom: 5px solid #33CCFF;
-  color: #33CCFF;
-}
-.nav-links li a:hover {
-  color: #34AEAE;
-}
-.video-active:hover {
-  border-bottom: 5px solid red;
-}
-.about:hover{
-  color:#3EB2B2;
-  border-bottom: 5px solid #33CC66;
-}
-.contact:hover{
-color:#029A9A;
-border-bottom: 5px solid #CC66CC
-
+  box-sizing: border-box;
 }
 
-.hero {
+.contact-page {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+
+
+/* Contact Section */
+.contact-section {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.contact-section .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+/* Contact Form */
+.contact-form h2 {
+  color: #099999;
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group input,
+.form-group textarea {
   width: 100%;
-  height: 200px;
-
-  background-image: url('/hero.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-
-}
-.contact{
-    width: 100%;
-    height: 1700px;
-
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  background: white;
+  color: #333;
 }
 
-.contact-h1{
-    color: #099999;
-}
-input {
-    width: 300px;
-    padding: 14px 16px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    outline: none;
-    transition: 0.3s ease;
-    background: #fff;
-    color:royalblue
-}
-.dropdown{
-    position:relative;
-    width:100%;
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #099999;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(9, 153, 153, 0.1);
 }
 
-.dropbtn{
-    width:331px;
-    padding:14px 16px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    background:#fff;
-    color:#099999;
-    text-align:left;
-    cursor:pointer;
+.form-group textarea {
+  resize: vertical;
 }
 
-.dropdown-content{
-    position:absolute;
-    width:331px;
-    background:#fff;
-    box-shadow:0 4px 8px rgba(0,0,0,.15);
-    z-index:100;
-}
-
-.dropdown-content a{
-    display:block;
-    padding:12px;
-    text-decoration:none;
-    color:#333;
-}
-
-.dropdown-content a:hover{
-    background:blue;
-    color:#fff;
-}
-textarea{
-    width:300px;
-    height:150px;
-    margin-top:20px;
-    padding:15px;
-    border:1px solid #ddd;
-    border-radius:8px;
-    resize:none;
-    outline: none;
-}
-.send-btn{
-    margin-top:20px;
-    padding:12px 30px;
-    border:none;
-    border-radius:8px;
-    background:#099999;
-    color:#fff;
-    cursor:pointer;
-}
-
-.send-btn:hover{
-    background:#009999;
-}
-.parent{
-  display:flex;
-  justify-content: space-around;
-}
-.ourlocation{
-  width: 400px;
-  height: 500px;
-
-}
-
-.contact-1{
-  margin-left: 20px;
-  width: 410px;
-}
-.ouraddress{
-  margin-left: 20px;
-  width: 410px;
-}
-.ouraddress-h1{
-  color: #009999;
-}
-input,
-textarea {
-    color: #099999;
-}
-
-input::placeholder,
-textarea::placeholder {
-    color: #099999;
-}
-
-.send-btn {
-    background: #099999;
-    color: #fff;
+/* Dropdown */
+.dropdown {
+  position: relative;
+  width: 100%;
 }
 
 .dropbtn {
-    color: #099999;
-}
-.ouraddress-p1{
-  margin-top: 23px;
-  line-height: 1.4;
-  color:#C1C1C1
- 
-}
-.ouraddress-p2{
-  margin-top: 23px;
-  line-height: 1.4;
-  color:#C1C1C1
-}
-.ouraddress-p3{
-    margin-top: 23px;
-  line-height: 1.4;
-  color:#C1C1C1
-}
-.last-second{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-    line-height: 1.9;
-    margin-top: 40px;
+  width: 100%;
+  padding: 15px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 16px;
+  text-align: left;
+  cursor: pointer;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
-.last-second a{
-    text-decoration:none;
-    color:#C1C1C1;
-    font-size:18px;
-    display:flex;
-    align-items:center;
-    gap:10px;
+.dropbtn:hover {
+  border-color: #099999;
 }
 
-.last-second a i{
-    color:#C1C1C1;
-    font-size:20px;
+.dropdown-content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  z-index: 100;
+  overflow: hidden;
 }
 
-.last-second a:hover,
-.last-second a:hover i{
-    color: #009999;
+.dropdown-content a {
+  display: block;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #333;
 }
-.image{
+
+.dropdown-content a:hover {
+  background: #099999;
+  color: white;
+}
+
+.send-btn {
+  width: 100%;
+  padding: 15px;
+  background: #099999;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.send-btn:hover {
+  background: #066666;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(9, 153, 153, 0.3);
+}
+
+.send-btn i {
+  margin-right: 10px;
+}
+
+/* Contact Info */
+.contact-info h2 {
+  color: #099999;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.address-desc {
+  color: #666;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.info-item {
   display: flex;
-  justify-content: space-evenly;
-  margin-top: 30px;
-  gap: 10px;
-}
-.image-1{
-  width: 300px;
-  height: 490px;
- margin-left: 10px;
-
-}
-.image-2{
-  width: 300px;
-  height: 490px;
- margin-left: 10px;
-
-}
-img{
-  width: 300px;
-  height: 180px;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
+.info-item i {
+  color: #099999;
+  font-size: 20px;
+  margin-top: 3px;
+  width: 25px;
+}
 
+.info-item span,
+.info-item a {
+  color: #555;
+  text-decoration: none;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
 
-.ryan{
+.info-item a:hover {
   color: #099999;
 }
 
-.ryan-p{
-  color: #CC6699;
-  font-size: 23px;
-}
-.ryan-pp{
-  line-height: 1.4;
-  color: #C1C1C1;
-}
-
-
-
-
-
-
-
-.social-icons{
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.social-icons a{
-    width: 45px;
-    height: 45px;
-    border: 1px solid #C1C1C1;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    transition: 0.3s ease;
-    background-color: #C1C1C1;
-    outline: none;
-}
-
-.social-icons a i{
-    font-size: 20px;
-    color:black;
-    transition: 0.3s ease;
-}
-
-.social-icons a:hover{
-    background: #009999;
-}
-
-.social-icons a:hover i{
-    color: #fff;
-}
-.last {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 40px;
-  background-color: #EEEEEE;
-  padding: 50px;
-  min-height: 250px;
-}
-
-
-
-.last-first h1,
-.last-second h3 {
-  margin-bottom: 20px;
-  color: #0f172a;
-  font-weight: 700;
-  position: relative;
-}
-
-.terms{
-  margin-left: 100px;
-  color: #9696AC;
-  margin-top: 70px;
-}
-
-.last-p {
-  font-size: 15px;
-  line-height: 1.8;
-  color: #9696AC;
-  margin-top: 10px;
-}
-.last-pp{
-  margin-top: 90px;
-   color: #9696AC;
-}
-.div-p{
-  margin-top: 80px ;
-   color: #9696AC;
-}
-.last-second {
-  display: flex;
-  flex-direction: column;
-}
-
-.last-second a {
-  text-decoration: none;
-  color: #475569;
-  margin-bottom: 14px;
-  transition: 0.3s;
-  font-weight: 500;
-}
-
-.last-second a:hover {
-  color: #009999;
-  transform: translateX(8px);
-}
-
-.social-icons {
+.social-links {
   display: flex;
   gap: 15px;
-  margin-bottom: 25px;
+  margin-top: 30px;
 }
 
-.social-icons i {
-  width: 50px;
-  height: 50px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: white;
+.social-icon {
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-
-  font-size: 22px;
-  cursor: pointer;
-
-  box-shadow: 0 5px 15px rgba(0,0,0,.08);
-  transition: all .4s ease;
+  background: white;
+  border: 2px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #099999;
+  text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-.social-icons i:hover {
-  background: #10b981;
+.social-icon:hover {
+  background: #099999;
   color: white;
-  transform: translateY(-8px) rotate(360deg);
+  transform: translateY(-3px);
 }
 
-.last-third p {
-  color: #475569;
-  line-height: 1.8;
+/* Map Section */
+.map-section {
+  padding: 60px 0;
+  background: white;
+}
+
+.map-section h2 {
+  text-align: center;
+  color: #099999;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.map-container {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.map-container iframe {
+  display: block;
+}
+
+/* Team Section */
+.team-section {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.section-title {
+  text-align: center;
+  color: #099999;
+  font-size: 2.5rem;
   margin-bottom: 10px;
 }
 
-.last-third div {
-  margin-top: 20px;
-  padding-top: 15px;
-  border-top: 1px solid #d1d5db;
+.section-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.team-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.team-image {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 4px solid #099999;
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.team-card h3 {
+  color: #099999;
+  margin-bottom: 5px;
+}
+
+.role {
+  color: #CC6699;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.bio {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.team-social {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.team-social a {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #099999;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.team-social a:hover {
+  background: #099999;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  background: #1a1a2e;
+  color: white;
+  padding: 60px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-col h3,
+.footer-col h4 {
+  margin-bottom: 15px;
+  color: #099999;
+}
+
+.footer-col p {
+  line-height: 1.8;
+  opacity: 0.8;
+}
+
+.footer-col a {
+  display: block;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: #099999;
+}
+
+.footer-col i {
+  margin-right: 10px;
+  color: #099999;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 20px;
+  text-align: center;
+  opacity: 0.7;
+  font-size: 14px;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .contact-section .container {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 768px) {
-  .last {
-    flex-direction: column;
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero p {
+    font-size: 1rem;
+  }
+  
+  .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
     text-align: center;
-    padding: 30px;
   }
-
-  .social-icons {
-    justify-content: center;
-  }
-
-  .last-second {
-    align-items: center;
-  }
-
-  p {
-    margin-left: 0;
-  }
-
-  .last-first h1::after,
-  .last-second h3::after {
-    left: 50%;
-    transform: translateX(-50%);
+  
+  .footer-col a {
+    text-align: center;
   }
 }
 
-
-/* Responsive */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 30px 0;
   }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    margin-top: 10px;
-    gap: 10px;
+  
+  .team-grid {
+    grid-template-columns: 1fr;
   }
-
-  .nav-links li a {
-    display: block;
-    width: 100%;
+  
+  .social-links {
+    justify-content: center;
   }
 }
 </style>
